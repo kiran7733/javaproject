@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '17' # Use the required Java version
+    jdkArchitecture: 'x64'
+
+- script: |
+    javac HelloWorld.java
+    java HelloWorld
+  displayName: 'Compile and Run Java Program'
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      
+      echo Hello world
